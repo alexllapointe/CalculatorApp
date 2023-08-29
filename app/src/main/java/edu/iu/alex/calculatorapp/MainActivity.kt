@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
 
     //Button Manipulation
 
+    //button init
     private fun initializeButtons() {
         val numberButtonIds = listOf(
             R.id.b0, R.id.b1, R.id.b2, R.id.b3, R.id.b4,
@@ -64,6 +65,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    //buttonPress controller function
     private fun onButtonPress(buttonText: String) {
         when {
             buttonText in "0123456789" -> appendDigit(buttonText)
@@ -78,6 +80,7 @@ class MainActivity : AppCompatActivity() {
 
     //Calculation Methods
 
+    //Switch statement used to calculate based on sign
     private fun performCalculation() {
         if (currentInput.isNotEmpty() && currentOperator.isNotEmpty()) {
             secondOperation = currentInput.toDouble()
@@ -96,6 +99,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     //Helper Calculation Methods
+
+    //Appends decimal to end of currentInput when called, refreshes display
     private fun appendDecimal() {
         if ("." !in currentInput) {
             currentInput += "."
@@ -103,6 +108,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    //Adds +/- sign to beginning of number when called
     private fun toggleSign() {
         if (currentInput.isNotEmpty() && currentInput.toDouble() != 0.0) {
             currentInput = (-currentInput.toDouble()).toString()
@@ -110,11 +116,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    //Adds desired number to text view when called
     private fun appendDigit(digit: String){
         currentInput += digit
         updateDisplay()
     }
-    
+
+    //Calls upon performCalulation based upon what action is desired, then resets input
     private fun setOperator(operator: String){
         if (currentOperator.isNotEmpty()) {
             performCalculation()
