@@ -1,21 +1,53 @@
 package edu.iu.alex.calculatorapp
-
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
-
 class MainActivity : AppCompatActivity() {
 
-    //TextView Declaration
     private lateinit var displayTextView: TextView
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        displayTextView = findViewById<TextView>(R.id.tvScreen)
+        displayTextView = findViewById(R.id.tvScreen)
+
         initializeButtons()
+
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("currentInput", currentInput)
+        outState.putString("currentOperator", currentOperator)
+        outState.putDouble("firstOperation", firstOperation)
+        outState.putDouble("secondOperation", secondOperation)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        currentInput = savedInstanceState.getString("currentInput", "")
+        currentOperator = savedInstanceState.getString("currentOperator", "")
+        firstOperation = savedInstanceState.getDouble("firstOperation", 0.0)
+        secondOperation = savedInstanceState.getDouble("secondOperation", 0.0)
+        updateDisplay()
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
+        } else {
+
+        }
+    }
+
+
 
     private var currentInput = ""
     private var currentOperator = ""
@@ -43,6 +75,15 @@ class MainActivity : AppCompatActivity() {
 
     //button init
     private fun initializeButtons() {
+
+        val trigonometricButtonIds = listOf(
+            R.id.bSin, R.id.bCos, R.id.bTan
+        )
+
+        val logarithmicButtonIds = listOf(
+            R.id.bLog10, R.id.bLn
+        )
+
         val numberButtonIds = listOf(
             R.id.b0, R.id.b1, R.id.b2, R.id.b3, R.id.b4,
             R.id.b5, R.id.b6, R.id.b7, R.id.b8, R.id.b9
@@ -55,7 +96,7 @@ class MainActivity : AppCompatActivity() {
             R.id.bC, R.id.bPosNeg, R.id.bPoint, R.id.bEquals
         )
 
-        val allButtonIds = numberButtonIds + operatorButtonIds + otherButtonIds
+        val allButtonIds = numberButtonIds + operatorButtonIds + otherButtonIds + trigonometricButtonIds + logarithmicButtonIds
 
         for (buttonId in allButtonIds) {
             val button = findViewById<Button>(buttonId)
@@ -70,13 +111,34 @@ class MainActivity : AppCompatActivity() {
     //buttonPress controller function
     private fun onButtonPress(buttonText: String) {
         when {
-            buttonText in "0123456789" -> appendDigit(buttonText)
-            buttonText in "+-X/%" -> setOperator(buttonText)
-            buttonText == "=" -> performCalculation()
-            buttonText == "." -> appendDecimal()
-            buttonText == "C" -> clearDisplay()
-            buttonText == "+/-" -> toggleSign()
-
+            buttonText in "0123456789" -> {
+                appendDigit(buttonText)
+                Log.d("CalculatorApp", "Digit $buttonText pressed")
+            }
+            buttonText in "+-X/%" -> {
+                setOperator(buttonText)
+                Log.d("CalculatorApp", "Operator $buttonText pressed")
+            }
+            buttonText == "=" -> {
+                performCalculation()
+                Log.d("CalculatorApp", "Equal key pressed")
+            }
+            buttonText == "." -> {
+                appendDecimal()
+                Log.d("CalculatorApp", "Period key pressed")
+            }
+            buttonText == "C" -> {
+                clearDisplay()
+                Log.d("CalculatorApp", "Clear key pressed")
+            }
+            buttonText == "+/-" -> {
+                toggleSign()
+                Log.d("CalculatorApp", "Pos/Neg key pressed")
+            }
+            buttonText in listOf("sin", "cos", "tan", "log", "ln") -> {
+                setOperator(buttonText)
+                Log.d("CalculatorApp", "Operator $buttonText pressed")
+            }
         }
     }
 
@@ -92,6 +154,11 @@ class MainActivity : AppCompatActivity() {
                 "X" -> (firstOperation * secondOperation).toString()
                 "/" -> (firstOperation / secondOperation).toString()
                 "%" -> (firstOperation % secondOperation).toString()
+                "sin" -> Math.sin(secondOperation).toString()
+                "cos" -> Math.cos(secondOperation).toString()
+                "tan" -> Math.tan(secondOperation).toString()
+                "log" -> Math.log10(secondOperation).toString()
+                "ln" -> Math.log(secondOperation).toString()
                 else -> currentInput
             }
             currentOperator = ""
@@ -124,7 +191,7 @@ class MainActivity : AppCompatActivity() {
         updateDisplay()
     }
 
-    //Calls upon performCalulation based upon what action is desired, then resets input
+    //Calls upon performCalculation based upon what action is desired, then resets input
     private fun setOperator(operator: String){
         if (currentOperator.isNotEmpty()) {
             performCalculation()
