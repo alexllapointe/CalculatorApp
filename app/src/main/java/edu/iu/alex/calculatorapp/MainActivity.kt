@@ -41,21 +41,6 @@ class MainActivity : AppCompatActivity() {
         super.onConfigurationChanged(newConfig)
 
         if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-
-            val trigonometricButtonIds = listOf(
-                R.id.bSin, R.id.bCos, R.id.bTan
-            )
-
-            val logarithmicButtonIds = listOf(
-                R.id.bLog10, R.id.bLn
-            )
-
-            val buttonsToNull = trigonometricButtonIds + logarithmicButtonIds
-
-            for (buttonId in buttonsToNull) {
-                var button = findViewById<Button>(buttonId)
-                button = null
-            }
         }
     }
 
@@ -83,9 +68,10 @@ class MainActivity : AppCompatActivity() {
         updateDisplay()
     }
 
-    //Button Manipulation
-
-    //button init
+    /**
+   * This method is used to initialize all necessary buttons. 
+   * @return void
+   */
     private fun initializeButtons() {
         val trigonometricButtonIds = listOf(
             R.id.bSin, R.id.bCos, R.id.bTan
@@ -124,7 +110,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //buttonPress controller function
+    /**
+   * This method is used handle button actions.
+   * It determines which specific button is being pressed and
+   * hands off to the appropriate helper method to complete the desired action. 
+   * @param buttonText This is the text given to the button 
+   * @return void
+   */
     private fun onButtonPress(buttonText: String) {
         when {
             buttonText in "0123456789" -> {
@@ -158,9 +150,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //Calculation Methods
-
-    //Switch statement used to calculate based on sign
+    /**
+   * This method uses a switch statement (when) to perform a desired operation.
+   * It is a helper method for onButtonPress.
+   * @return void
+   */
     private fun performCalculation() {
         if (currentInput.isNotEmpty() && currentOperator.isNotEmpty()) {
             secondOperation = currentInput.toDouble()
