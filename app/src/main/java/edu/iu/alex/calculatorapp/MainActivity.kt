@@ -37,13 +37,6 @@ class MainActivity : AppCompatActivity() {
         updateDisplay()
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-
-        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-        }
-    }
-
 
 
     private var currentInput = ""
