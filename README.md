@@ -1,6 +1,6 @@
 # Project Name
 
-Description of the project ...
+Basic calculator app built to be responsive vertically and horizontally.
 
 ## Functionality 
 
