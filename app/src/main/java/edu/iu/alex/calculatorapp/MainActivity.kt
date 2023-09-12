@@ -40,10 +40,22 @@ class MainActivity : AppCompatActivity() {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
 
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
 
-        } else {
+            val trigonometricButtonIds = listOf(
+                R.id.bSin, R.id.bCos, R.id.bTan
+            )
 
+            val logarithmicButtonIds = listOf(
+                R.id.bLog10, R.id.bLn
+            )
+
+            val buttonsToNull = trigonometricButtonIds + logarithmicButtonIds
+
+            for (buttonId in buttonsToNull) {
+                var button = findViewById<Button>(buttonId)
+                button = null
+            }
         }
     }
 
@@ -75,7 +87,6 @@ class MainActivity : AppCompatActivity() {
 
     //button init
     private fun initializeButtons() {
-
         val trigonometricButtonIds = listOf(
             R.id.bSin, R.id.bCos, R.id.bTan
         )
@@ -99,11 +110,16 @@ class MainActivity : AppCompatActivity() {
         val allButtonIds = numberButtonIds + operatorButtonIds + otherButtonIds + trigonometricButtonIds + logarithmicButtonIds
 
         for (buttonId in allButtonIds) {
-            val button = findViewById<Button>(buttonId)
+            var button = findViewById<Button>(buttonId)
 
-            button.setOnClickListener {
-                val buttonText = button.text.toString()
-                onButtonPress(buttonText)
+            // Check if orientation is not landscape and set new buttons to null.
+            if (resources.configuration.orientation != Configuration.ORIENTATION_LANDSCAPE && (buttonId in trigonometricButtonIds || buttonId in logarithmicButtonIds)) {
+                button = null
+            } else {
+                button.setOnClickListener {
+                    val buttonText = button.text.toString()
+                    onButtonPress(buttonText)
+                }
             }
         }
     }
