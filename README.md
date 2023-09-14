@@ -1,4 +1,4 @@
-# Project Name
+# Calculator App
 
 Basic calculator app built to be responsive vertically and horizontally.
 
