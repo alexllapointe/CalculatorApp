@@ -1,17 +1,45 @@
-# CalculatorApp
+# Project Name
+
+Basic calculator app built to be responsive vertically and horizontally.
+
+## Functionality 
+
+The following **required** functionality is completed:
+
+* [ ] User sees a calculator app in portrat mode and landscape mode.
+* [ ] User can compute basic math functions in portrat mode and the added capabilities of (sin,cos,tan,log10 and log) in landscape mode.
+
+The following **extensions** are implemented:
+
+Basic Android implementation.
+
+## Video Walkthrough
+
+Here's a walkthrough of implemented user stories:
+
+<img src='walkthrough.gif' title='Video Walkthrough' width='50%' alt='Video Walkthrough' />
+
+![](calculatorpreview.gif)
 
 
-Fully functioning calculator app designed to mimic the standard iphone app calculator. 
+## Notes
 
-Demos:
+Describe any challenges encountered while building the app.
 
---Multiplication, Division, Addition Demo--
-https://gyazo.com/471ca8d11045f288994f8f46002a2359
-https://i.gyazo.com/471ca8d11045f288994f8f46002a2359.mp4
+--Getting the app to work horizontally and vertically was challenging. 
 
---Modulo, Subtraction, Negative/Positive Demo--
-https://gyazo.com/8cdec51e077bdf4b712420dc54724288
-https://i.gyazo.com/8cdec51e077bdf4b712420dc54724288.mp4
+## License
 
+    Copyright [2023] Alex LaPointe. All rights reserved.
 
-TM @AlexLaPointe. All Rights Reserved. 
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
