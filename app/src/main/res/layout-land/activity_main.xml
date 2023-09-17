@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Top TextView -->
+        <TextView
+            android:id="@+id/tvScreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textAlignment="textEnd"
+            android:textSize="80sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Row 1: C, +/-, %, / -->
+        <Button
+            android:id="@+id/bC"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="C"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvScreen" />
+
+        <Button
+            android:id="@+id/bPosNeg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="+/-"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/bC"
+            app:layout_constraintTop_toBottomOf="@+id/tvScreen" />
+
+        <Button
+            android:id="@+id/bModulo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="%"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/bPosNeg"
+            app:layout_constraintTop_toBottomOf="@+id/tvScreen" />
+
+        <Button
+            android:id="@+id/bDivide"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="/"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/bModulo"
+            app:layout_constraintTop_toBottomOf="@+id/tvScreen" />
+
+        <Button
+            android:id="@+id/bSin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="sin"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/bDivide"
+            app:layout_constraintTop_toBottomOf="@+id/tvScreen" />
+
+        <!-- Row 2: 7, 8, 9, X -->
+        <Button
+            android:id="@+id/b7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="7"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bC" />
+
+        <Button
+            android:id="@+id/b8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="8"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/b7"
+            app:layout_constraintTop_toBottomOf="@+id/bPosNeg" />
+
+        <Button
+            android:id="@+id/b9"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="9"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/b8"
+            app:layout_constraintTop_toBottomOf="@+id/bModulo" />
+
+        <Button
+            android:id="@+id/bMultiply"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="X"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/b9"
+            app:layout_constraintTop_toBottomOf="@+id/bDivide" />
+
+        <Button
+            android:id="@+id/bCos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="cos"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/bMultiply"
+            app:layout_constraintTop_toBottomOf="@+id/bSin"/>
+
+        <!-- Row 3: 4, 5, 6, - -->
+        <Button
+            android:id="@+id/b4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="4"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/b7" />
+
+        <Button
+            android:id="@+id/b5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/b4"
+            app:layout_constraintTop_toBottomOf="@+id/b8" />
+
+        <Button
+            android:id="@+id/b6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="6"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/b5"
+            app:layout_constraintTop_toBottomOf="@+id/b9" />
+
+        <Button
+            android:id="@+id/bMinus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/b6"
+            app:layout_constraintTop_toBottomOf="@+id/bMultiply" />
+
+        <Button
+            android:id="@+id/bTan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="tan"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/bMinus"
+            app:layout_constraintTop_toBottomOf="@+id/bCos"/>
+
+        <!-- Row 4: 1, 2, 3, + -->
+        <Button
+            android:id="@+id/b1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/b4" />
+
+        <Button
+            android:id="@+id/b2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="2"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/b1"
+            app:layout_constraintTop_toBottomOf="@+id/b5" />
+
+        <Button
+            android:id="@+id/b3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="3"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/b2"
+            app:layout_constraintTop_toBottomOf="@+id/b6" />
+
+        <Button
+            android:id="@+id/bPlus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/b3"
+            app:layout_constraintTop_toBottomOf="@+id/bMinus" />
+
+        <Button
+            android:id="@+id/bLog10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="log"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/bPlus"
+            app:layout_constraintTop_toBottomOf="@+id/bTan" />
+
+        <!-- Row 5: 0, ., = -->
+        <Button
+            android:id="@+id/b0"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/b1"
+            app:layout_constraintEnd_toStartOf="@+id/bPoint"
+            app:layout_constraintWidth_percent="0.22"/>
+
+        <Button
+            android:id="@+id/bPoint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="."
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/b0"
+            app:layout_constraintTop_toBottomOf="@+id/b2"
+            app:layout_constraintEnd_toStartOf="@+id/bEquals" />
+
+        <Button
+            android:id="@+id/bEquals"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="="
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/bPoint"
+            app:layout_constraintTop_toBottomOf="@+id/b3"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <Button
+            android:id="@+id/bLn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="ln"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/bEquals"
+            app:layout_constraintTop_toBottomOf="@+id/bLog10" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
